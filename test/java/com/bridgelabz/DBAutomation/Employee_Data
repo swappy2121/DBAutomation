@@ -41,7 +41,7 @@ public class Employee_Data extends BaseClass {
         System.out.println("Connection established");
         Statement statement = connection.createStatement();
         ResultSet resultset = statement.executeQuery("select ename , sal+500 from employee;");
-        System.out.println("Employee_Data with salary increament by 1k");
+        System.out.println("Employee_Data with salary increament by 500");
         while (resultset.next()) {
             String ename = resultset.getString(1);
             String sal = resultset.getString(2);
@@ -54,7 +54,7 @@ public class Employee_Data extends BaseClass {
         System.out.println("Connection established");
         Statement statement = connection.createStatement();
         ResultSet resultset = statement.executeQuery("select ename , sal%2 from employee;");
-        System.out.println("Employee_Data with salary increament by 1k");
+      System.out.println("Employee_Data with salary edited by using modulo operator");
         while (resultset.next()) {
             String ename = resultset.getString(1);
             String sal = resultset.getString(2);
