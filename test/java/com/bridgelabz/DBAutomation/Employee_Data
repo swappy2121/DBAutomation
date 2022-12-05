@@ -1,0 +1,64 @@
+package com.bridgelabz.DBAutomation;
+
+import org.testng.annotations.Test;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Employee_Data extends BaseClass {
+    @Test
+    public void dbTest_ExecuteSelectData() throws SQLException, ClassNotFoundException {
+        connection = setUp();
+        System.out.println("Connection established");
+        Statement statement = connection.createStatement();
+        ResultSet resultset = statement.executeQuery("select * from employee");
+        while (resultset.next()) {
+            String ename = resultset.getString(1);
+            String eid = resultset.getString(2);
+            String job = resultset.getString(3);
+            String sal = resultset.getString(4);
+            String dept = resultset.getString(5);
+            System.out.println(ename + " | " + eid + " | " + job + " | " + sal + " | " + dept);
+        }
+        System.out.println("Getting all upload data table");
+    }
+    @Test
+    public void dbTest_InsertData() throws SQLException, ClassNotFoundException {
+        connection = setUp();
+        System.out.println("Connection established");
+        Statement statement = connection.createStatement();
+        ResultSet resultset = statement.executeQuery("select ename , sal+1000 from employee;");
+        System.out.println("Employee_Data with salary increament by 1k");
+        while (resultset.next()) {
+            String ename = resultset.getString(1);
+            String sal = resultset.getString(2);
+            System.out.println(ename + " | " + sal);
+        }
+    }
+    @Test
+    public void dbTest_UpdateData() throws SQLException, ClassNotFoundException {
+        connection = setUp();
+        System.out.println("Connection established");
+        Statement statement = connection.createStatement();
+        ResultSet resultset = statement.executeQuery("select ename , sal+500 from employee;");
+        System.out.println("Employee_Data with salary increament by 1k");
+        while (resultset.next()) {
+            String ename = resultset.getString(1);
+            String sal = resultset.getString(2);
+            System.out.println(ename + " | " + sal);
+        }
+    }
+    @Test
+    public void dbTest_DeleteData() throws SQLException, ClassNotFoundException {
+        connection = setUp();
+        System.out.println("Connection established");
+        Statement statement = connection.createStatement();
+        ResultSet resultset = statement.executeQuery("select ename , sal%2 from employee;");
+        System.out.println("Employee_Data with salary increament by 1k");
+        while (resultset.next()) {
+            String ename = resultset.getString(1);
+            String sal = resultset.getString(2);
+            System.out.println(ename + " | " + sal);
+        }
+    }
+}
